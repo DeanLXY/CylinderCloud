@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CylinderCloud</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="module_confirm_inspection">送检确认</string>
+    <string name="module_cylinder_information">气瓶信息</string>
+    <string name="module_inspection_record">检验记录</string>
+    <string name="module_inspection_renewal">检验更新</string>
+    <string name="module_check_account">检验台账</string>
+    <string name="module_data_sync">数据同步</string>
+    <string name="module_warning_reminder">预警催检</string>
+    <string name="module_system_settings">系统设置</string>
+</resources>
