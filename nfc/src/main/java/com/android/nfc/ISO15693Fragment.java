@@ -10,10 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-import com.bmob.jie.nfc.R;
-
-import cn.pda.rfid.hf.HfReader;
+ import cn.pda.rfid.hf.HfReader;
 import cn.pda.rfid.hf.Utils;
 
 public class ISO15693Fragment extends Fragment implements OnClickListener {

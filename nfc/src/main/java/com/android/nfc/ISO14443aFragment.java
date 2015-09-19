@@ -14,7 +14,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
-import com.bmob.jie.nfc.R;
 
 import cn.pda.rfid.hf.HfReader;
 import cn.pda.rfid.hf.Utils;

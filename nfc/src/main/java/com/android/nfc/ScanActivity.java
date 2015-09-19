@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
-import com.bmob.jie.nfc.R;
 
 
 public class ScanActivity extends AppCompatActivity implements ActionBar.OnNavigationListener {

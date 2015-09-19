@@ -14,7 +14,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bmob.jie.nfc.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
