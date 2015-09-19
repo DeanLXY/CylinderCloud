@@ -45,13 +45,7 @@ public class ISO14443aFragment extends Fragment implements OnClickListener {
 	private int block;
 	private byte[] password ;
 	private byte[] dataWrite;
-	private boolean authFlag ;//��֤��ʶ
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-	}
-	
+	private boolean authFlag ;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
