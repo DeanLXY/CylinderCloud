@@ -1,19 +1,21 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light"></style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="AppTheme.Base">
 
         <item name="colorPrimary">@color/appBackground</item>
         <item name="colorPrimaryDark">@color/appBackgroundDark</item>
         <item name="colorControlActivated">@color/appBackground</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="windowNoTitle">true</item>
         <item name="popupMenuStyle">@style/popupMenuStyle</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
         <!--<item name="android:activatedBackgroundIndicator">@drawable/activated_background</item>-->
         <!--<item name="selectableItemBackground">@drawable/selectable_background</item>-->
     </style>
@@ -40,9 +42,9 @@
 
     <style name="popupMenuStyle" parent="Base.Widget.AppCompat.PopupMenu.Overflow"></style>
 
-    <style name="ToolbarTheme" parent="AppBaseTheme">
-        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
-        <!--<item name="android:textColorSecondary">@android:color/white</item>-->
+    <style name="toolbarStyle" parent="AppTheme">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
         <!--<item name="android:textCursorDrawable">@drawable/cursor_drawable</item>-->
     </style>
 

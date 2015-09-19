@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.android.rfid.ScanActivity;
+import com.android.nfc.ScanActivity;
 import com.example.cylindercloud.R;
 import com.example.cylindercloud.websocket.WebSocketManager;
 
@@ -23,11 +23,7 @@ public class PortalActivity extends AppCompatActivity implements View.OnClickLis
     }
     @Override
     public void onClick(View view) {
-//        SnackbarUtils.show(this,R.string.module_check_account);
-//        WebSocketManager.getManager(this).sendTextMessage("");
         startActivity(new Intent(this, ScanActivity.class));
-
-
     }
 
 }

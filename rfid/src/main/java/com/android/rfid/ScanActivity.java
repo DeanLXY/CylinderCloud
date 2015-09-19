@@ -9,12 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.ArrayAdapter;
+import android.view.Window;
 
 
 public class ScanActivity extends AppCompatActivity implements ActionBar.OnNavigationListener {
 
-    private Toolbar toolbar;
     private FragmentManager fragManager;
     private FragmentTransaction fragTran;
 
@@ -24,27 +23,26 @@ public class ScanActivity extends AppCompatActivity implements ActionBar.OnNavig
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scanrfid);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.collapseActionView();
-
+        setContentView(R.layout.toolbar_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-            getSupportActionBar().setListNavigationCallbacks(new ArrayAdapter<String>(this,
-                            android.R.layout.simple_dropdown_item_1line,
-                            android.R.id.text1,
-                            new String[]{"基 本 寻 卡", " ISO14443A ", " ISO15693 "}),
-                    this);
-        }
-        fragManager = getFragmentManager();
-        baseFindCard = new BaseFindCardFragment();
-        iso14443A = new ISO14443aFragment();
-        iso15693 = new ISO15693Fragment();
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP);
+//            getSupportActionBar().setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+//            getSupportActionBar().setListNavigationCallbacks(new ArrayAdapter<String>(this,
+//                            android.R.layout.simple_dropdown_item_1line,
+//                            android.R.id.text1,
+//                            new String[]{"基 本 寻 卡", " ISO14443A ", " ISO15693 "}),
+//                    this);
+//        }
+//        fragManager = getFragmentManager();
+//        baseFindCard = new BaseFindCardFragment();
+//        iso14443A = new ISO14443aFragment();
+//        iso15693 = new ISO15693Fragment();
 
     }
 
@@ -56,26 +54,26 @@ public class ScanActivity extends AppCompatActivity implements ActionBar.OnNavig
 
     @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-        switch (itemPosition) {
-            case 0:
-                repleaceFragment(baseFindCard);
-                break;
-            case 1:
-                repleaceFragment(iso14443A);
-                break;
-            case 2:
-                repleaceFragment(iso15693);
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
-
-            default:
-                break;
-        }
+//        switch (itemPosition) {
+//            case 0:
+//                repleaceFragment(baseFindCard);
+//                break;
+//            case 1:
+//                repleaceFragment(iso14443A);
+//                break;
+//            case 2:
+//                repleaceFragment(iso15693);
+//                break;
+//            case 3:
+//
+//                break;
+//            case 4:
+//
+//                break;
+//
+//            default:
+//                break;
+//        }
 
         return false;
     }
