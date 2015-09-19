@@ -11,4 +11,11 @@
     <string name="module_data_sync">数据同步</string>
     <string name="module_warning_reminder">预警催检</string>
     <string name="module_system_settings">系统设置</string>
+
+
+    <string name="connect_success">连接成功</string>
+    <string name="connect_lost">连接失败</string>
+    <string name="connect_closed">连接断开</string>
+
+
 </resources>

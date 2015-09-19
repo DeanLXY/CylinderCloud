@@ -4,7 +4,10 @@ import android.content.Context;
 import android.util.Log;
 ;
 
+import com.example.cylindercloud.R;
+import com.example.cylindercloud.ui.IActivity;
 import com.example.cylindercloud.utils.LogUtils;
+import com.example.cylindercloud.utils.SnackbarUtils;
 
 import de.tavendo.autobahn.WebSocketConnectionHandler;
 
@@ -22,12 +25,16 @@ public class WebSocketConnectListener extends WebSocketConnectionHandler {
     public void onOpen() {
         super.onOpen();
         LogUtils.d("%s", "WebSocketConnectListener connect");
+        if(this.context instanceof IActivity)
+            SnackbarUtils.show((IActivity)context, R.string.connect_success);
     }
 
     @Override
     public void onClose(int code, String reason) {
         super.onClose(code, reason);
         LogUtils.d("%s", "WebSocketConnectListener lost");
+        if(this.context instanceof IActivity)
+            SnackbarUtils.show((IActivity)context, R.string.connect_lost);
     }
 
     @Override
