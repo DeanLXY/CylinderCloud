@@ -6,6 +6,7 @@ import com.example.cylindercloud.Constants;
 
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
+import de.tavendo.autobahn.WebSocketOptions;
 
 /**
  * Created by wxj on 2015-7-26.
@@ -34,6 +35,8 @@ public class WebSocketManager {
     public void connect() {
         if (!isConnect()) {
             connectListener = new WebSocketConnectListener(context);
+//            WebSocketOptions options = new WebSocketOptions();
+//            options.
             try {
                 mConnection.connect(WebSocket, connectListener);
             } catch (WebSocketException e) {
@@ -58,12 +61,7 @@ public class WebSocketManager {
         if (mConnection == null) {
             return;
         }
-        if (!isConnect()) {
-            connect();
-        }
-        if (!isConnect()) {
-            connect();
-        }
+        connect();
         mConnection.sendTextMessage(sendText);
     }
 }

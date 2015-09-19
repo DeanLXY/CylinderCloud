@@ -1,6 +1,7 @@
 package com.example.cylindercloud.websocket;
 
 import android.content.Context;
+import android.util.Log;
 ;
 
 import com.example.cylindercloud.utils.LogUtils;
@@ -21,7 +22,6 @@ public class WebSocketConnectListener extends WebSocketConnectionHandler {
     public void onOpen() {
         super.onOpen();
         LogUtils.d("%s", "WebSocketConnectListener connect");
-        WebSocketManager.getManager(context).sendTextMessage("mm" + "!@#$%" + "我要接单");
     }
 
     @Override
@@ -33,6 +33,7 @@ public class WebSocketConnectListener extends WebSocketConnectionHandler {
     @Override
     public void onTextMessage(String payload) {
         super.onTextMessage(payload);
+        LogUtils.d("%s","payload = "+payload);
     }
 
 }

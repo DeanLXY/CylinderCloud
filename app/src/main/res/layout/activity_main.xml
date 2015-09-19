@@ -9,6 +9,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_module_header"
         android:layout_weight="1"/>
 
     <LinearLayout
@@ -32,7 +34,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/orders"
+                    android:id="@+id/btn_confirm_inspection"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
