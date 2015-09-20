@@ -32,6 +32,7 @@ public class PortalActivity extends IActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 //        startActivity(new Intent(this, ScanActivity.class));
+        WebSocketManager.getManager(PortalActivity.this).sendTextMessage("rfid=3539539762");
     }
 
 }

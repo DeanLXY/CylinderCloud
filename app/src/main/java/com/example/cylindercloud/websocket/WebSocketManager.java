@@ -3,10 +3,10 @@ package com.example.cylindercloud.websocket;
 import android.content.Context;
 
 import com.example.cylindercloud.Constants;
+import com.example.cylindercloud.ui.IActivity;
 
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
-import de.tavendo.autobahn.WebSocketOptions;
 
 /**
  * Created by wxj on 2015-7-26.
@@ -18,12 +18,12 @@ public class WebSocketManager {
     private WebSocketConnectListener connectListener;
     private Context context;
 
-    private WebSocketManager(Context contxt) {
+    private WebSocketManager(IActivity contxt) {
         this.context = contxt;
         mConnection = new WebSocketConnection();
     }
 
-    public static WebSocketManager getManager(Context contxt) {
+    public static WebSocketManager getManager(IActivity contxt) {
         if (manager == null)
             synchronized (WebSocketManager.class) {
                 if (manager == null)
@@ -35,8 +35,6 @@ public class WebSocketManager {
     public void connect() {
         if (!isConnect()) {
             connectListener = new WebSocketConnectListener(context);
-//            WebSocketOptions options = new WebSocketOptions();
-//            options.
             try {
                 mConnection.connect(WebSocket, connectListener);
             } catch (WebSocketException e) {

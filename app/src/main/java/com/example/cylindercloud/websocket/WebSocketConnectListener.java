@@ -8,6 +8,7 @@ import com.example.cylindercloud.R;
 import com.example.cylindercloud.ui.IActivity;
 import com.example.cylindercloud.utils.LogUtils;
 import com.example.cylindercloud.utils.SnackbarUtils;
+import com.example.cylindercloud.utils.SweetDialogUtils;
 
 import de.tavendo.autobahn.WebSocketConnectionHandler;
 
@@ -41,6 +42,7 @@ public class WebSocketConnectListener extends WebSocketConnectionHandler {
     public void onTextMessage(String payload) {
         super.onTextMessage(payload);
         LogUtils.d("%s","payload = "+payload);
+        SweetDialogUtils.show(context,payload);
     }
 
 }
