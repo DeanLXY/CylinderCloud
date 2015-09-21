@@ -1,7 +1,9 @@
 package com.example.cylindercloud.websocket.protocol;
 
+import android.app.Dialog;
 import android.content.Context;
 
+import com.example.cylindercloud.utils.SweetDialogUtils;
 import com.example.cylindercloud.websocket.WebSocketManager;
 import com.example.cylindercloud.websocket.protocol.annotation.Path;
 
@@ -13,8 +15,9 @@ public abstract class IRequest {
     private IRequestListener listener;
     private String path;
     private String tag;
+    private Dialog pDialog;
 
-    public IRequest(Context context, IRequestListener listener,String ...args) {
+    public IRequest(Context context, IRequestListener listener, String... args) {
         this.context = context;
         this.listener = listener;
         Path path = this.getClass().getAnnotation(Path.class);
@@ -34,8 +37,31 @@ public abstract class IRequest {
 
     public void request() {
         String msg = prapareMsg();
-        WebSocketManager wsm = new WebSocketManager(context,getPath(), msg, listener);
+        WebSocketManager wsm = new WebSocketManager(context, getPath(), msg, new IRequestListener() {
+            @Override
+            public void onSuccess(String payload) {
+                if (pDialog != null && pDialog.isShowing()) {
+                    pDialog.dismiss();
+                    pDialog = null;
+                }
+                if (listener != null) {
+                    listener.onSuccess(payload);
+                }
+            }
+
+            @Override
+            public void onClose(int code, String reason) {
+                if (pDialog != null && pDialog.isShowing()) {
+                    pDialog.dismiss();
+                    pDialog = null;
+                }
+                if (listener != null) {
+                    listener.onClose(code, reason);
+                }
+            }
+        });
 //        wsm.sendTextMessage(msg);
+        pDialog = SweetDialogUtils.show(context, SweetDialogUtils.AlertType.PROGRESS_TYPE, "正在努力获取");
         wsm.connect();
     }
 
