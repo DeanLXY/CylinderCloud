@@ -48,7 +48,7 @@ public class SweetDialogUtils {
 
     protected static Dialog showNormalDialog(Context context, String content) {
         Dialog dialog = new SweetAlertDialog(context)
-                .setContentText(content);
+                .setContentText(content).setTitleText("");
         dialog.show();
         return dialog;
     }

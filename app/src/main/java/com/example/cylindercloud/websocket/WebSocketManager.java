@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.cylindercloud.Constants;
 import com.example.cylindercloud.ui.IActivity;
+import com.example.cylindercloud.websocket.protocol.IRequestListener;
 
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
@@ -17,26 +18,33 @@ public class WebSocketManager {
     private WebSocketConnection mConnection;
     private WebSocketConnectListener connectListener;
     private Context context;
+    private String message,path;
+    private IRequestListener listener;
 
-    private WebSocketManager(IActivity contxt) {
+    public WebSocketManager(Context contxt, String path, String msg, IRequestListener listener) {
         this.context = contxt;
+        this.path = path;
+        this.message = msg;
+        this.listener = listener;
         mConnection = new WebSocketConnection();
     }
 
-    public static WebSocketManager getManager(IActivity contxt) {
-        if (manager == null)
-            synchronized (WebSocketManager.class) {
-                if (manager == null)
-                    manager = new WebSocketManager(contxt);
-            }
-        return manager;
-    }
+//    public static WebSocketManager getManager(Context contxt, String msg, IRequestListener listener) {
+//        this.message = msg;
+//        this.listener = listener;
+////        if (manager == null)
+////            synchronized (WebSocketManager.class) {
+////                if (manager == null)
+//                    manager = new WebSocketManager(contxt);
+////            }
+//        return manager;
+//    }
 
     public void connect() {
         if (!isConnect()) {
-            connectListener = new WebSocketConnectListener(context);
+            connectListener = new WebSocketConnectListener(context,mConnection, message, listener);
             try {
-                mConnection.connect(WebSocket, connectListener);
+                mConnection.connect(WebSocket+path, connectListener);
             } catch (WebSocketException e) {
                 e.printStackTrace();
             }

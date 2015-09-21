@@ -1,4 +1,4 @@
-package com.example.cylindercloud.module;
+package com.example.cylindercloud.websocket.protocol.module;
 
 import java.io.Serializable;
 
