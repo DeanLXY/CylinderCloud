@@ -27,6 +27,7 @@ public class XmlUtils {
             int eventType = pullParser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 switch (eventType) {
+
                     case XmlPullParser.START_DOCUMENT:
 
                         //DO NOTHING
