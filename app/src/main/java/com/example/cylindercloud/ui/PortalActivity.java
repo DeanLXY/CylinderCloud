@@ -3,6 +3,7 @@ package com.example.cylindercloud.ui;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.cylindercloud.App;
 import com.example.cylindercloud.R;
 import com.example.cylindercloud.utils.SweetDialogUtils;
 import com.example.cylindercloud.websocket.WebSocketManager;
@@ -11,6 +12,7 @@ import com.example.cylindercloud.websocket.protocol.BottleCarCRequest;
 import com.example.cylindercloud.websocket.protocol.IRequest;
 import com.example.cylindercloud.websocket.protocol.IRequestListener;
 import com.example.cylindercloud.websocket.protocol.RfidRequest;
+import com.example.cylindercloud.websocket.protocol.TokenRequest;
 
 
 public class PortalActivity extends IActivity implements View.OnClickListener {
@@ -48,7 +50,7 @@ public class PortalActivity extends IActivity implements View.OnClickListener {
             }, "3539539762");
             request.request();
         } else if (view == btnCylinderInfo) {
-            IRequest request = new BottleCarCRequest(this, new IRequestListener() {
+            IRequest request = new TokenRequest(this, App.getInstance().getDeviceId(), new IRequestListener() {
                 @Override
                 public void onSuccess(String payload) {
                     SweetDialogUtils.show(PortalActivity.this, payload);

@@ -3,6 +3,7 @@ package com.example.cylindercloud.websocket.protocol;
 import android.app.Dialog;
 import android.content.Context;
 
+import com.example.cylindercloud.utils.LogUtils;
 import com.example.cylindercloud.utils.SweetDialogUtils;
 import com.example.cylindercloud.websocket.WebSocketManager;
 import com.example.cylindercloud.websocket.protocol.annotation.Path;
@@ -37,6 +38,7 @@ public abstract class IRequest {
 
     public void request() {
         String msg = prapareMsg();
+        LogUtils.d("%s<>%s",getPath(),msg);
         WebSocketManager wsm = new WebSocketManager(context, getPath(), msg, new IRequestListener() {
             @Override
             public void onSuccess(String payload) {
