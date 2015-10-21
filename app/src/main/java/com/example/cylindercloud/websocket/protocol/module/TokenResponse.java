@@ -16,15 +16,15 @@ public class TokenResponse extends IResponse {
 //        "errorCode": 0
 //    }
 
-//    private Result result;
-//
-//    public Result getResult() {
-//        return result;
-//    }
-//
-//    public void setResult(Result result) {
-//        this.result = result;
-//    }
+    private Result result;
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
+    }
 
     public class Result implements Serializable {
         private String token;
@@ -39,8 +39,7 @@ public class TokenResponse extends IResponse {
     }
 
     public Token toToken() {
-//        Token token = new Token(this.result.getToken(), System.currentTimeMillis(), -1);
-//        return token;
-        return null;
+        Token token = new Token(this.result.getToken(), System.currentTimeMillis(), -1);
+        return token;
     }
 }

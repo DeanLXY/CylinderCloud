@@ -19,6 +19,6 @@ public class TokenRequest extends IRequest {
 
     @Override
     protected String prapareMsg() {
-        return "{" + deviceId + "}";
+        return  "deviceId="+deviceId;
     }
 }

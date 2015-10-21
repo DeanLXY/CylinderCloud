@@ -16,6 +16,6 @@ public class BottleCarBRequest extends IRequest {
 
     @Override
     protected String prapareMsg() {
-        return "{token:"+this.getToken()+",rfiduid:3da3b81f,infotab:_color,method:0}";
+        return "token="+this.getToken()+",rfiduid=3da3b81f,infotab=_color,method=0";
     }
 }

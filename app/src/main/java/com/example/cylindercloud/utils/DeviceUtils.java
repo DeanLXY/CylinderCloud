@@ -1,6 +1,8 @@
 package com.example.cylindercloud.utils;
 
 import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import java.util.UUID;
@@ -21,5 +23,18 @@ public class DeviceUtils {
         }
 
         return deviceId;
+    }
+
+
+    public static String getWIFIMacAddress(Context context) {
+        String wifiMac;
+        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wm.getConnectionInfo();
+        wifiMac = wifiInfo.getMacAddress();
+
+        if (wifiMac == null) {
+            wifiMac = UUID.randomUUID().toString();
+        }
+        return wifiMac;
     }
 }

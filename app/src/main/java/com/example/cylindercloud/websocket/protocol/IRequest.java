@@ -118,6 +118,8 @@ public abstract class IRequest {
             }
             if (token.isWorked()) {
                 App.getInstance().setToken(token);
+                setToken(token.getToken());
+                request.request();
             } else {
                 IRequest tokenRequest = new TokenRequest(context, App.getInstance().getDeviceId(), new IRequestListener() {
                     @Override
