@@ -16,6 +16,7 @@
     <string name="connect_success">连接成功</string>
     <string name="connect_lost">连接失败</string>
     <string name="connect_closed">连接断开</string>
+    <string name="device_unauth">设备未验证</string>
 
 
 </resources>

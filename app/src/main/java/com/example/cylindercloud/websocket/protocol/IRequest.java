@@ -1,13 +1,16 @@
 package com.example.cylindercloud.websocket.protocol;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 
 import com.example.cylindercloud.App;
+import com.example.cylindercloud.R;
 import com.example.cylindercloud.db.DBAdapter;
 import com.example.cylindercloud.moudle.Token;
 import com.example.cylindercloud.utils.JsonUtils;
 import com.example.cylindercloud.utils.LogUtils;
+import com.example.cylindercloud.utils.SnackbarUtils;
 import com.example.cylindercloud.utils.SweetDialogUtils;
 import com.example.cylindercloud.websocket.WebSocketManager;
 import com.example.cylindercloud.websocket.protocol.annotation.Path;
@@ -94,10 +97,14 @@ public abstract class IRequest {
                 @Override
                 public void onSuccess(String payload) {
                     TokenResponse response = JsonUtils.fromJson(payload, TokenResponse.class);
-                    DBAdapter.getInstance().addToken(response.toToken());
-                    App.getInstance().setToken(response.toToken());
-                    setToken(response.toToken().getToken());
-                    request.request();
+                    if (response.isRequestSuccssful()) {
+                        DBAdapter.getInstance().addToken(response.toToken());
+                        App.getInstance().setToken(response.toToken());
+                        setToken(response.toToken().getToken());
+                        request.request();
+                    } else {
+                        SnackbarUtils.show((Activity) context, R.string.device_unauth);
+                    }
                 }
 
                 @Override
@@ -116,10 +123,14 @@ public abstract class IRequest {
                     @Override
                     public void onSuccess(String payload) {
                         TokenResponse response = JsonUtils.fromJson(payload, TokenResponse.class);
-                        DBAdapter.getInstance().addToken(response.toToken());
-                        App.getInstance().setToken(response.toToken());
-                        setToken(response.toToken().getToken());
-                        request.request();
+                        if (response.isRequestSuccssful()) {
+                            DBAdapter.getInstance().addToken(response.toToken());
+                            App.getInstance().setToken(response.toToken());
+                            setToken(response.toToken().getToken());
+                            request.request();
+                        } else {
+                            SnackbarUtils.show((Activity) context, R.string.device_unauth);
+                        }
                     }
 
                     @Override
