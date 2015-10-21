@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015-9-18.
  */
-public class WSResponse implements Serializable{
+public class  WSResponse implements Serializable{
     private int result;
     private String message;
     private List<CylinderInfo> data;

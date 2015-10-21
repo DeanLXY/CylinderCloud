@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.example.cylindercloud.db.DBAdapter;
+import com.example.cylindercloud.moudle.Token;
 import com.example.cylindercloud.utils.ConfigManager;
 import com.example.cylindercloud.utils.DeviceUtils;
 
@@ -12,6 +14,7 @@ import com.example.cylindercloud.utils.DeviceUtils;
  */
 public class App extends Application {
     private static App instance;
+    private Token token;
 
     @Override
     public void onCreate() {
@@ -41,5 +44,13 @@ public class App extends Application {
     @Override
     public void onLowMemory() {
         super.onLowMemory();
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
+    }
+
+    public Token getToken() {
+        return token;
     }
 }

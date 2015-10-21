@@ -6,7 +6,7 @@ package com.example.cylindercloud;
 public class Constants {
     public static final String WS_ADDRESS = "58.215.2.84";
     public static final String WS_POET = "9000";
-    public static final String WEBSOCKET = "ws://58.215.2.84:9000";
+    public static final String WEBSOCKET = "ws://qp.hystudio.cn:9000";
 //    public static  final String WEBSOCKET = "ws://58.215.2.84:9000/cngs_getToken";
 
    public class Path {

@@ -50,7 +50,7 @@ public class PortalActivity extends IActivity implements View.OnClickListener {
             }, "3539539762");
             request.request();
         } else if (view == btnCylinderInfo) {
-            IRequest request = new TokenRequest(this, App.getInstance().getDeviceId(), new IRequestListener() {
+            IRequest request = new BottleCarBRequest(this,  new IRequestListener() {
                 @Override
                 public void onSuccess(String payload) {
                     SweetDialogUtils.show(PortalActivity.this, payload);
@@ -61,7 +61,7 @@ public class PortalActivity extends IActivity implements View.OnClickListener {
                     SweetDialogUtils.show(PortalActivity.this, String.format("错误代码%d %s",code,reason));
                 }
             });
-            request.request();
+            request.requestWithToken();
         }
     }
 

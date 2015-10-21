@@ -20,6 +20,6 @@ public class CheckedListResponse extends IRequest {
     @Override
     protected String prapareMsg() {
         //TODO
-        return "{\"token\":\"rPeDS7jzftEYTDuAX0Tll3548B3LcCGbsI6g766ZRaT+THarZBVFfVYJ4cfDCn1D/zxdWXy/bXo\",\" rfiduid \":\"3539539762\",\"method\":2}";
+        return "{\"token\":\""+this.getToken()+"\",\" rfiduid \":\"3539539762\",\"method\":2}";
     }
 }

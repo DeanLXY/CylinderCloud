@@ -3,10 +3,15 @@ package com.example.cylindercloud.websocket.protocol;
 import android.app.Dialog;
 import android.content.Context;
 
+import com.example.cylindercloud.App;
+import com.example.cylindercloud.db.DBAdapter;
+import com.example.cylindercloud.moudle.Token;
+import com.example.cylindercloud.utils.JsonUtils;
 import com.example.cylindercloud.utils.LogUtils;
 import com.example.cylindercloud.utils.SweetDialogUtils;
 import com.example.cylindercloud.websocket.WebSocketManager;
 import com.example.cylindercloud.websocket.protocol.annotation.Path;
+import com.example.cylindercloud.websocket.protocol.module.TokenResponse;
 
 /**
  * Created by Administrator on 2015-9-21.
@@ -17,6 +22,7 @@ public abstract class IRequest {
     private String path;
     private String tag;
     private Dialog pDialog;
+    private String token;
 
     public IRequest(Context context, IRequestListener listener, String... args) {
         this.context = context;
@@ -36,9 +42,13 @@ public abstract class IRequest {
         this.tag = tag;
     }
 
+    public void requestWithToken() {
+        requestToken(this);
+    }
+
     public void request() {
         String msg = prapareMsg();
-        LogUtils.d("%s<>%s",getPath(),msg);
+        LogUtils.d("%s<>%s", getPath(), msg);
         WebSocketManager wsm = new WebSocketManager(context, getPath(), msg, new IRequestListener() {
             @Override
             public void onSuccess(String payload) {
@@ -65,6 +75,61 @@ public abstract class IRequest {
 //        wsm.sendTextMessage(msg);
         pDialog = SweetDialogUtils.show(context, SweetDialogUtils.AlertType.PROGRESS_TYPE, "正在努力获取");
         wsm.connect();
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public synchronized void requestToken(final IRequest request) {
+        Token token = App.getInstance().getToken();
+        if (token == null)
+            token = DBAdapter.getInstance().getToken();
+        if (token == null) {
+            IRequest tokenRequest = new TokenRequest(context, App.getInstance().getDeviceId(), new IRequestListener() {
+                @Override
+                public void onSuccess(String payload) {
+                    TokenResponse response = JsonUtils.fromJson(payload, TokenResponse.class);
+                    DBAdapter.getInstance().addToken(response.toToken());
+                    App.getInstance().setToken(response.toToken());
+                    setToken(response.toToken().getToken());
+                    request.request();
+                }
+
+                @Override
+                public void onClose(int code, String reason) {
+                }
+            });
+            tokenRequest.request();
+        } else {
+            if (token == null) {
+                return;
+            }
+            if (token.isWorked()) {
+                App.getInstance().setToken(token);
+            } else {
+                IRequest tokenRequest = new TokenRequest(context, App.getInstance().getDeviceId(), new IRequestListener() {
+                    @Override
+                    public void onSuccess(String payload) {
+                        TokenResponse response = JsonUtils.fromJson(payload, TokenResponse.class);
+                        DBAdapter.getInstance().addToken(response.toToken());
+                        App.getInstance().setToken(response.toToken());
+                        setToken(response.toToken().getToken());
+                        request.request();
+                    }
+
+                    @Override
+                    public void onClose(int code, String reason) {
+                    }
+                });
+                tokenRequest.request();
+            }
+        }
+
     }
 
     public void cancel() {
