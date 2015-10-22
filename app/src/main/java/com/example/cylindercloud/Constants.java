@@ -29,11 +29,11 @@ public class Constants {
         public static final String GETBOTTLECARBPATH = "/cngs_getBottleCarB";
         public static final String GETBOTTLECARCPATH = "/cngs_getBottleCarC";
         public static final String GETBOTTLEPATH = "/cngs_getBottle";
-        public static final String  GETBOTTLECHECKLISTPATH = "/cngs_getBottleCheckList";
-        public static final String  PUTBOTTLECHECKUPDATAPATH = "/cngs_PutBottleCheckUpdata";
+        public static final String  GETBOTTLECHECKLISTPATH = "/cngs_getCheckList";
+        public static final String  PUTBOTTLECHECKUPDATAPATH = "/cngs_putBottleCheckUpdata";
         public static final String  GETCHECKLISTPATH = "/cngs_GetCheckList";
         public static final String  SYNCDATAPATH = "/cngs_syncData";
-        public static final String  GETBOTTLEWARNINGPATH = "/cngs_GetBottleWarning";
+        public static final String  GETBOTTLEWARNINGPATH = "/cngs_getBottleWarning";
 
     }
 }

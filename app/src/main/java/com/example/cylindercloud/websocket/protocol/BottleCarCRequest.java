@@ -16,6 +16,6 @@ public class BottleCarCRequest extends IRequest {
 
     @Override
     protected String prapareMsg() {
-        return "{\"token\":\"rPeDS7jzftEYTDuAX0Tll3548B3LcCGbsI6g766ZRaT+THarZBVFfVYJ4cfDCn1D/zxdWXy/bXo\",\"Color\":\"蓝色\",\"CarNo\":\"苏B12345\",\"method\":0}";
+        return "color=黑色&cphm=黑E12121&token=" + this.getToken() + "_cccc_cphm_djbh_cpxh_cjh_fdjh_syxz_color_regUnit_gd_zzgb_jybh_zzdm_zzxkzbh_ccrq_zcbh_xjrq_bfrq_azdw_cqjz_CNGID_unitName_licenseNO_licEnd_updateTime";
     }
 }
