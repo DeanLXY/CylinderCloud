@@ -20,6 +20,6 @@ public class BottleCheckedUpdateRequest extends IRequest {
     @Override
     protected String prapareMsg() {
         //TODO
-        return "rfiduid=9d14b61f&xjDate=2015-10-12&pd=合格&licend=2020-01-01&licenseNO=TS2210A87-2015&token=" + this.getToken() + "_cccc_cphm_djbh_cpxh_cjh_fdjh_syxz_color_regUnit_gd_zzgb_jybh_zzdm_zzxkzbh_ccrq_zcbh_xjrq_bfrq_azdw_cqjz_CNGID_unitName_licenseNO_licEnd_updateTime";
+        return "rfiduid=9d14b61f&xjDate=2015-10-12&pd=合格&licend=2020-01-01&licenseNO=TS2210A87-2014&token=" + this.getToken() + "_cccc_cphm_djbh_cpxh_cjh_fdjh_syxz_color_regUnit_gd_zzgb_jybh_zzdm_zzxkzbh_ccrq_zcbh_xjrq_bfrq_azdw_cqjz_CNGID_unitName_licenseNO_licEnd_updateTime";
     }
 }

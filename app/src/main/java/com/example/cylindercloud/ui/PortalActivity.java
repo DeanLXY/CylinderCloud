@@ -13,6 +13,7 @@ import com.example.cylindercloud.websocket.protocol.BottleCheckedListRequest;
 import com.example.cylindercloud.websocket.protocol.BottleCheckedUpdateRequest;
 import com.example.cylindercloud.websocket.protocol.BottleRequest;
 import com.example.cylindercloud.websocket.protocol.BottleWarningRequest;
+import com.example.cylindercloud.websocket.protocol.CheckedListResponse;
 import com.example.cylindercloud.websocket.protocol.IRequest;
 import com.example.cylindercloud.websocket.protocol.IRequestListener;
 import com.example.cylindercloud.websocket.protocol.RfidRequest;
@@ -124,7 +125,7 @@ public class PortalActivity extends IActivity implements View.OnClickListener {
             });
             request.requestWithToken();
         } else if (view == btnCheckAccount) {
-            IRequest request = new BottleCheckedListRequest(this, new IRequestListener() {
+            IRequest request = new CheckedListResponse(this, new IRequestListener() {
                 @Override
                 public void onSuccess(String payload) {
                     SweetDialogUtils.show(PortalActivity.this, payload);
